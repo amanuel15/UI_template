@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ui_one/models/destination_model.dart';
 import 'package:ui_one/pages/destinations_page.dart';
+import 'package:ui_one/pages/sliver_page.dart';
 
 class DestinationCarousel extends StatelessWidget {
   @override
@@ -22,7 +23,11 @@ class DestinationCarousel extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () => {},
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SliverPage(),
+                    )),
                 child: Text(
                   'see all',
                   style: TextStyle(
