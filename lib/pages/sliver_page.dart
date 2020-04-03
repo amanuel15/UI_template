@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sliver_fab/sliver_fab.dart';
 
 class SliverPage extends StatelessWidget {
@@ -8,26 +9,42 @@ class SliverPage extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverPersistentHeader(
-            delegate: MyAppBar(
-              expandedHeight: 200.0,
-            ),
-            pinned: true,
-            floating: true,
-          ),
-          // SliverAppBar(
-          //   //pinned: true,
-          //   // backgroundColor: Colors.transparent,
-          //   // elevation: 0.0,
-          //   // title: Text('SliverAppBar'),
-          //   // expandedHeight: 200.0,
-          //   // flexibleSpace: FlexibleSpaceBar(
-          //   //   background: Image.asset('assets/images/hotel0.jpg', fit: BoxFit.cover),
-          //   // ),
-          //   // snap: true,
-          //   // floating: true,
-
+          // SliverPersistentHeader(
+          //   delegate: MyAppBar(
+          //     expandedHeight: 200.0,
+          //   ),
+          //   pinned: true,
+          //   floating: true,
           // ),
+          SliverAppBar(
+            //pinned: true,
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+            title: Text('SliverAppBar'),
+            //expandedHeight: 200.0,
+            // flexibleSpace: FlexibleSpaceBar(
+            //   background: Image.asset('assets/images/hotel0.jpg', fit: BoxFit.cover),
+            // ),
+            snap: true,
+            floating: true,
+            actions: <Widget>[
+              Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.search,
+                      size: 26.0,
+                    ),
+                  )),
+              Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Icon(FontAwesomeIcons.filter, size: 18.0,),
+                  )),
+            ],
+          ),
           SliverFixedExtentList(
             itemExtent: 150.0,
             delegate: SliverChildListDelegate(
@@ -37,7 +54,11 @@ class SliverPage extends StatelessWidget {
                 Container(color: Colors.green),
                 Container(color: Colors.orange),
                 Container(color: Colors.yellow),
-                Container(color: Colors.pink),
+                Container(color: Colors.black),
+                Container(color: Colors.amber),
+                Container(color: Colors.lime),
+                Container(color: Colors.deepOrange),
+                Container(color: Colors.grey),
               ],
             ),
           ),
@@ -64,21 +85,35 @@ class MyAppBar extends SliverPersistentHeaderDelegate {
           fit: BoxFit.cover,
         ),
         Positioned(
-          height: 100,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: MediaQuery.of(context).padding.top,
-            ),
-            child: Opacity(
-              opacity: shrinkOffset / expandedHeight,
-              child: Text(
-                "MySliverAppBar",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 23,
+          //top: MediaQuery.of(context).padding.top,
+          height: MediaQuery.of(context).size.height * 0.13,
+          child: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  iconSize: 30.0,
+                  color: Colors.black,
+                  onPressed: () => Navigator.pop(context),
                 ),
-              ),
+                Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.search),
+                      iconSize: 30.0,
+                      color: Colors.black,
+                      onPressed: () => {},
+                    ),
+                    IconButton(
+                      icon: Icon(FontAwesomeIcons.filter),
+                      iconSize: 20.0,
+                      color: Colors.black,
+                      onPressed: () => {},
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
